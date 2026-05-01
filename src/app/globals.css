@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/**
+ * Theme values are injected by the root layout via getTheme() as inline
+ * CSS custom properties on :root. Never hardcode hex values in components
+ * — use var(--color-*) references and extend the theme in src/lib/design/themes/.
+ */
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
