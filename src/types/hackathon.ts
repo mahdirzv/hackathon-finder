@@ -24,4 +24,6 @@ export type HackathonFilters = {
   mode?: string
   status?: string
   tag?: string
+  search?: string
+  sort?: 'deadline' | 'prize'
 }

@@ -80,7 +80,9 @@ export function HackathonCard({ hackathon: h }: { hackathon: Hackathon }) {
 
           <div className="flex flex-wrap gap-1">
             {h.tags.map((tag) => (
-              <Badge key={tag} variant="outline" className="text-[10px]">{tag}</Badge>
+              <a key={tag} href={`/?tag=${encodeURIComponent(tag)}`} className="hover:underline cursor-pointer">
+                <Badge variant="outline" className="text-[10px]">{tag}</Badge>
+              </a>
             ))}
           </div>
         </CardContent>
