@@ -1,0 +1,268 @@
+[
+  {
+    "id": "ethglobal",
+    "name": "ETHGlobal",
+    "url": "https://ethglobal.com/events",
+    "fetchType": "html",
+    "notes": "Requires full Chrome UA. Extract href='/events/<slug>' pattern. HTTP-check each slug — returns 500 for non-existent slugs.",
+    "tags": ["Web3", "Ethereum", "ZK", "DeFi"],
+    "active": true
+  },
+  {
+    "id": "dorahacks",
+    "name": "DoraHacks",
+    "url": "https://dorahacks.io/hackathon",
+    "fetchType": "api",
+    "apiEndpoint": "https://dorahacks.io/api/hackathon/list?type=public&limit=50&offset={offset}",
+    "notes": "Open API but intermittent auth walls. Key fields: title, start_time, end_time, online, prize_pool, url.",
+    "tags": ["Web3", "Open Source", "General"],
+    "active": true
+  },
+  {
+    "id": "mlh",
+    "name": "Major League Hacking",
+    "url": "https://mlh.io/seasons/2026/events",
+    "fetchType": "html",
+    "notes": "Cloudflare WAF blocks headless requests. Try with full Chrome UA + cookies. Falls back to manual curation.",
+    "tags": ["General", "Students", "Community"],
+    "active": true
+  },
+  {
+    "id": "devfolio",
+    "name": "Devfolio",
+    "url": "https://devfolio.co/hackathons",
+    "fetchType": "api",
+    "apiEndpoint": "https://api.devfolio.co/api/hackathons?ordering=-starts_at&page={page}",
+    "notes": "API returns up to 2 pages. Response shape: { result, count, pages }. Fields: name, starts_at, ends_at, slug, is_online. Event URL: https://devfolio.co/<slug>.",
+    "tags": ["Web3", "General", "India"],
+    "active": true
+  },
+  {
+    "id": "devpost",
+    "name": "Devpost",
+    "url": "https://devpost.com/hackathons",
+    "fetchType": "html",
+    "notes": "Devpost ToS prohibits automated API access. HTML scraping of the public listing page is borderline — proceed carefully and rate-limit. Best used for manual curation.",
+    "tags": ["General", "AI", "Health", "Climate"],
+    "active": false
+  },
+  {
+    "id": "unstop",
+    "name": "Unstop",
+    "url": "https://unstop.com/hackathons",
+    "fetchType": "html",
+    "notes": "Pan-India platform. HTML listing page returns 200. Extract event cards from page source.",
+    "tags": ["Full Stack", "Algorithms", "India", "Career"],
+    "active": true
+  },
+  {
+    "id": "hackerearth",
+    "name": "HackerEarth",
+    "url": "https://www.hackerearth.com/hackathons/",
+    "fetchType": "html",
+    "apiEndpoint": "https://www.hackerearth.com/api/events/hackathon/listing/?limit=20&offset={offset}",
+    "notes": "Has a semi-public JSON API for hackathon listings. Fields: title, start_utc, end_utc, url.",
+    "tags": ["General", "AI", "Algorithms"],
+    "active": true
+  },
+  {
+    "id": "lablab",
+    "name": "lablab.ai",
+    "url": "https://lablab.ai/event",
+    "fetchType": "html",
+    "notes": "AI-focused hackathon platform. Returns 403 to non-browser clients — requires full browser UA and Cloudflare cookie bypass.",
+    "tags": ["AI", "LLM", "Generative AI"],
+    "active": true
+  },
+  {
+    "id": "hackathon-com",
+    "name": "Hackathon.com",
+    "url": "https://www.hackathon.com/online",
+    "fetchType": "html",
+    "notes": "Aggregator with listing of online hackathons. HTML page is scrapeable. Look for event titles, dates, and links.",
+    "tags": ["General"],
+    "active": true
+  },
+  {
+    "id": "angelhack",
+    "name": "AngelHack",
+    "url": "https://angelhack.com/hackathons/",
+    "fetchType": "html",
+    "notes": "Runs global hackathons. HTML listing page. Look for JSON-LD structured data or visible date strings.",
+    "tags": ["Startup", "General"],
+    "active": true
+  },
+  {
+    "id": "junction",
+    "name": "Junction",
+    "url": "https://www.hackjunction.com",
+    "fetchType": "html",
+    "notes": "Europe's largest hackathon organiser (Helsinki). Single annual event — check homepage for dates.",
+    "tags": ["General", "Europe", "Students"],
+    "active": true
+  },
+  {
+    "id": "encode-club",
+    "name": "Encode Club",
+    "url": "https://www.encode.club/hackathons",
+    "fetchType": "html",
+    "notes": "Web3 education + hackathon platform. Partners with major chains (Solana, Ethereum, Polkadot).",
+    "tags": ["Web3", "Blockchain", "Education"],
+    "active": true
+  },
+  {
+    "id": "gitcoin",
+    "name": "Gitcoin",
+    "url": "https://gitcoin.co/hackathons/explorer",
+    "fetchType": "api",
+    "apiEndpoint": "https://gitcoin.co/api/v1/hackathon/?format=json&limit=20&offset={offset}",
+    "notes": "Open API. Fields: name, start_date, end_date, url, total_prizes. Focused on Web3/open source.",
+    "tags": ["Web3", "Open Source", "Grants"],
+    "active": true
+  },
+  {
+    "id": "kaggle",
+    "name": "Kaggle",
+    "url": "https://www.kaggle.com/competitions",
+    "fetchType": "api",
+    "apiEndpoint": "https://www.kaggle.com/api/v1/competitions/list?sortBy=recentlyCreated&pageSize=20",
+    "notes": "ML competitions, not traditional hackathons. Requires Kaggle API key in Authorization header. Only include if explicitly looking for ML challenges.",
+    "tags": ["ML", "Data Science", "AI"],
+    "active": false
+  },
+  {
+    "id": "huggingface",
+    "name": "Hugging Face",
+    "url": "https://huggingface.co/events",
+    "fetchType": "html",
+    "notes": "AI/ML focused. Events page lists sprints and hackathons. Look for JSON-LD or visible date strings.",
+    "tags": ["AI", "ML", "Open Source"],
+    "active": true
+  },
+  {
+    "id": "chainlink",
+    "name": "Chainlink",
+    "url": "https://chain.link/hackathon",
+    "fetchType": "html",
+    "notes": "Oracle-focused Web3 hackathon. Annual event. Check homepage for current edition dates.",
+    "tags": ["Web3", "Oracles", "Solidity"],
+    "active": true
+  },
+  {
+    "id": "nasa-space-apps",
+    "name": "NASA Space Apps Challenge",
+    "url": "https://www.spaceappschallenge.org",
+    "fetchType": "html",
+    "notes": "Annual event, ~October. Check spaceappschallenge.org/2026/ for current year. The homepage URL is acceptable since the whole site is the event.",
+    "tags": ["Space", "Science", "Open Data"],
+    "active": true
+  },
+  {
+    "id": "hackmit",
+    "name": "HackMIT",
+    "url": "https://hackmit.org",
+    "fetchType": "html",
+    "notes": "Annual MIT hackathon, ~September. Homepage IS the event page. Look for year and dates in page title/hero.",
+    "tags": ["General", "Students", "MIT"],
+    "active": true
+  },
+  {
+    "id": "treehacks",
+    "name": "TreeHacks (Stanford)",
+    "url": "https://www.treehacks.com",
+    "fetchType": "html",
+    "notes": "Stanford's annual hackathon, ~February. Homepage is the event page.",
+    "tags": ["General", "Students", "Stanford"],
+    "active": true
+  },
+  {
+    "id": "calHacks",
+    "name": "CalHacks (UC Berkeley)",
+    "url": "https://calhacks.io",
+    "fetchType": "html",
+    "notes": "UC Berkeley's hackathon, ~October. Homepage is the event page.",
+    "tags": ["General", "Students", "Berkeley"],
+    "active": true
+  },
+  {
+    "id": "pennapps",
+    "name": "PennApps",
+    "url": "https://pennapps.com",
+    "fetchType": "html",
+    "notes": "UPenn hackathon, ~September. One of the oldest collegiate hackathons.",
+    "tags": ["General", "Students", "UPenn"],
+    "active": true
+  },
+  {
+    "id": "mhacks",
+    "name": "MHacks (UMich)",
+    "url": "https://mhacks.org",
+    "fetchType": "html",
+    "notes": "University of Michigan hackathon, ~October.",
+    "tags": ["General", "Students", "Michigan"],
+    "active": true
+  },
+  {
+    "id": "hackprinceton",
+    "name": "HackPrinceton",
+    "url": "https://www.hackprinceton.com",
+    "fetchType": "html",
+    "notes": "Princeton hackathon, bi-annual (spring + fall).",
+    "tags": ["General", "Students", "Princeton"],
+    "active": true
+  },
+  {
+    "id": "hacknY",
+    "name": "HackNY",
+    "url": "https://hackny.org",
+    "fetchType": "html",
+    "notes": "NYC collegiate hackathon. Annual event.",
+    "tags": ["General", "Students", "NYC"],
+    "active": true
+  },
+  {
+    "id": "hack-duke",
+    "name": "HackDuke",
+    "url": "https://www.hackduke.org",
+    "fetchType": "html",
+    "notes": "Duke University hackathon focused on social good. Annual, ~October.",
+    "tags": ["Social Good", "Students", "Duke"],
+    "active": true
+  },
+  {
+    "id": "sbhacks",
+    "name": "SBHacks (UCSB)",
+    "url": "https://www.sbhacks.com",
+    "fetchType": "html",
+    "notes": "UC Santa Barbara hackathon. Annual event, ~January.",
+    "tags": ["General", "Students", "UCSB"],
+    "active": true
+  },
+  {
+    "id": "hackumass",
+    "name": "HackUMass",
+    "url": "https://hackumass.com",
+    "fetchType": "html",
+    "notes": "UMass Amherst hackathon. Annual, ~October.",
+    "tags": ["General", "Students", "UMass"],
+    "active": true
+  },
+  {
+    "id": "climatelaunchpad",
+    "name": "Climate Launchpad",
+    "url": "https://climatelaunchpad.org",
+    "fetchType": "html",
+    "notes": "World's largest green business ideas competition. Annual. Good for climate-track hackathons.",
+    "tags": ["Climate", "Sustainability", "Impact"],
+    "active": true
+  },
+  {
+    "id": "solana-hackathon",
+    "name": "Solana Foundation Hackathons",
+    "url": "https://solana.com/hackathon",
+    "fetchType": "html",
+    "notes": "Solana ecosystem hackathons (Grizzlython, Hyperdrive, etc). Check the page for current event.",
+    "tags": ["Web3", "Solana", "Blockchain"],
+    "active": true
+  }
+]
