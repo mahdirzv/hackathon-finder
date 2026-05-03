@@ -9,14 +9,15 @@ import { NewsletterBanner } from '@/components/NewsletterBanner'
 export const dynamic = 'force-dynamic'
 
 type PageProps = {
-  searchParams: Promise<{ mode?: string; status?: string }>
+  searchParams: Promise<{ mode?: string; status?: string; tag?: string; search?: string; sort?: string }>
 }
 
 export default async function HomePage({ searchParams }: PageProps) {
-  const { mode, status } = await searchParams
+  const { mode, status, tag, search, sort } = await searchParams
   const user    = await getUser()
   const all     = getHackathons()
-  const results = filterHackathons(all, { mode, status })
+  const sortVal = (sort === 'deadline' || sort === 'prize') ? sort : undefined
+  const results = filterHackathons(all, { mode, status, tag, search, sort: sortVal })
 
   const total    = all.length
   const ongoing  = all.filter((h) => h.status === 'ongoing').length
@@ -49,7 +50,8 @@ export default async function HomePage({ searchParams }: PageProps) {
             <div className="flex items-center justify-between gap-4 flex-wrap">
               <h2 id="listings-heading" className="text-sm font-medium text-[var(--color-text-muted)]">
                 {results.length} {results.length === 1 ? 'result' : 'results'}
-                {((mode && mode !== 'all') || (status && status !== 'all')) ? ' — filtered' : ''}
+                {search ? ` for "${search}"` : ''}
+                {((mode && mode !== 'all') || (status && status !== 'all') || tag || search) ? ' — filtered' : ''}
               </h2>
               <Suspense>
                 <FilterBar />
